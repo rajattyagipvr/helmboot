@@ -60,7 +60,7 @@ func TestHelmfileUpgradeFromCluster(t *testing.T) {
 		expectedRequirementsFile := filepath.Join(testDir, "expected-jx-requirements.yml")
 		require.FileExists(t, expectedRequirementsFile, "no expected requirements file for test %s", name)
 
-		_, err = config.LoadRequirementsConfigFile(expectedRequirementsFile)
+		_, err = config.LoadRequirementsConfigFile(expectedRequirementsFile, config.DefaultFailOnValidationError)
 		require.NoError(t, err, "failed to validate %s", expectedRequirementsFile)
 
 		want, err := ioutil.ReadFile(expectedRequirementsFile)

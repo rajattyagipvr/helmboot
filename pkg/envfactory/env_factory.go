@@ -44,7 +44,7 @@ func (o *EnvFactory) AddFlags(cmd *cobra.Command) {
 // CreateDevEnvGitRepository creates the dev environment git repository from the given directory
 func (o *EnvFactory) CreateDevEnvGitRepository(dir string, gitPublic bool) error {
 	o.OutDir = dir
-	requirements, fileName, err := config.LoadRequirementsConfig(dir)
+	requirements, fileName, err := config.LoadRequirementsConfig(dir, config.DefaultFailOnValidationError)
 	if err != nil {
 		return errors.Wrapf(err, "failed to load requirements from %s", dir)
 	}

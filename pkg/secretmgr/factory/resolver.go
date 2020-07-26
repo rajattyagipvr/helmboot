@@ -162,7 +162,7 @@ func (r *KindResolver) resolveRequirements(secretsYAML string) (*config.Requirem
 		return requirements, ns, err
 	}
 
-	requirements, _, err := config.LoadRequirementsConfig(r.Dir)
+	requirements, _, err := config.LoadRequirementsConfig(r.Dir, config.DefaultFailOnValidationError)
 	if err != nil {
 		return requirements, ns, errors.Wrapf(err, "failed to requirements YAML file from %s", r.Dir)
 	}
