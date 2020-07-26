@@ -85,7 +85,7 @@ func GetRequirementsFromEnvironment(kubeClient kubernetes.Interface, jxClient ve
 		log.Logger().Warnf("could not find dev Environment in namespace %s", ns)
 	}
 	if devEnv != nil {
-		requirements, err := config.GetRequirementsConfigFromTeamSettings(&devEnv.Spec.TeamSettings)
+		requirements, err := config.GetRequirementsConfigFromTeamSettings(&devEnv.Spec.TeamSettings, false)
 		if err != nil {
 			return devEnv, nil, errors.Wrapf(err, "failed to load requirements from dev environment %s in namespace %s", devEnv.Name, ns)
 		}
@@ -383,7 +383,7 @@ func FindRequirementsAndGitURL(jxFactory jxfactory.Factory, gitURLOption string,
 			if gitURL == "" {
 				gitURL = devEnv.Spec.Source.URL
 			}
-			requirements, err = config.GetRequirementsConfigFromTeamSettings(&devEnv.Spec.TeamSettings)
+			requirements, err = config.GetRequirementsConfigFromTeamSettings(&devEnv.Spec.TeamSettings, false)
 			if err != nil {
 				log.Logger().Debugf("failed to load requirements from team settings %s", err.Error())
 			}

@@ -76,7 +76,7 @@ func (o *ShowOptions) findRequirementsAndGitURL() (*config.RequirementsConfig, s
 
 	gitURL := dev.Spec.Source.URL
 
-	requirements, err := config.GetRequirementsConfigFromTeamSettings(&dev.Spec.TeamSettings)
+	requirements, err := config.GetRequirementsConfigFromTeamSettings(&dev.Spec.TeamSettings, false)
 	if err != nil {
 		return nil, gitURL, errors.Wrapf(err, "failed to find requirements in team settings for the 'dev' Environment for namespace %s", ns)
 	}

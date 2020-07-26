@@ -143,7 +143,7 @@ func (r *KindResolver) resolveRequirements(secretsYAML string) (*config.Requirem
 		if r.GitURL == "" {
 			r.GitURL = dev.Spec.Source.URL
 		}
-		requirements, err := config.GetRequirementsConfigFromTeamSettings(&dev.Spec.TeamSettings)
+		requirements, err := config.GetRequirementsConfigFromTeamSettings(&dev.Spec.TeamSettings, false)
 		if err != nil {
 			return nil, ns, errors.Wrapf(err, "failed to unmarshal requirements from 'dev' Environment in namespace %s", ns)
 		}

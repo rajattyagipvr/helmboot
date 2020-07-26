@@ -36,7 +36,7 @@ func (u *HelmfileUpgrader) ExportRequirements() (*config.RequirementsConfig, err
 			if u.DevSource.URL == "" {
 				u.DevSource = e.Spec.Source
 			}
-			config, err := config.GetRequirementsConfigFromTeamSettings(&e.Spec.TeamSettings)
+			config, err := config.GetRequirementsConfigFromTeamSettings(&e.Spec.TeamSettings, false)
 			if err == nil && config != nil {
 				answer = config
 

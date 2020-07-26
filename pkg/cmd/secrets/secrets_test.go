@@ -41,7 +41,7 @@ func TestImportExportCommands(t *testing.T) {
 	devEnv := kube.CreateDefaultDevEnvironment(ns)
 	devEnv.Namespace = ns
 	devEnv.Spec.Source.URL = "https://github.com/dummyowner/environment-dummycluster-dev.git"
-	req, err := config.GetRequirementsConfigFromTeamSettings(&devEnv.Spec.TeamSettings)
+	req, err := config.GetRequirementsConfigFromTeamSettings(&devEnv.Spec.TeamSettings, false)
 	if req == nil || err != nil {
 		// lets populate some dummy requirements
 		req = config.NewRequirementsConfig()
